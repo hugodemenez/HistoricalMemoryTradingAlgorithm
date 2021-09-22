@@ -236,8 +236,8 @@ def manage_position(predict):
     try:
         #We check if we have to do something with the current position, update current price highest price and lowest price
         check_position()
-    except:
-        print(Exception)
+    except Exception as e:
+        print(e)
     #We slow down the requests
     time.sleep(0.2)
 
