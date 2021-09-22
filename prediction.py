@@ -16,7 +16,6 @@ class Prediction:
         """
         Donne le signal d'achat
         """
-        symbol = symbol.replace(Settings().base_asset,"")
         error = ''
         
         current_price = Settings().broker.price(symbol)['bid']
@@ -24,7 +23,7 @@ class Prediction:
         try:
             for support in csv_reader().file_to_dict_list():
                 #Look if current price is almost on the support (tolerence %)
-                    if current_price < support['price']*(1+Settings().tolerence) and current_price > support['price']*(1-Settings().tolerence) and support['paire']==symbol:
+                    if current_price < support['price']*(1+Settings().tolerence) and current_price > support['price']*(1-Settings().tolerence) and support['paire'].upper() in symbol.upper():
                         return {
                             'signal':"buy",
                             'recovery': support['potential_yield'],

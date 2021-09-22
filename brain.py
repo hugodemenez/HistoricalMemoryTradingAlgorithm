@@ -177,7 +177,7 @@ def find_entry_point():
         time.sleep(1)
         try:
             #We analyze the market with the signals defined inside prediction.py
-            predict = Prediction().buy_signal(symbol)
+            predict = Prediction().buy_signal(symbol+'/'+Settings.base_asset)
             #We clear the console
             cls()
             for values in predict:
