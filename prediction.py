@@ -23,7 +23,8 @@ class Prediction:
             
         try:
             for support in csv_reader().file_to_dict_list():
-                    if current_price == support['price'] and support['paire']==symbol:
+                #Look if current price is almost on the support (tolerence %)
+                    if current_price < support['price']*(1+Settings().tolerence) and current_price > support['price']*(1-Settings().tolerence) and support['paire']==symbol:
                         return {
                             'signal':"buy",
                             'recovery': support['potential_yield'],

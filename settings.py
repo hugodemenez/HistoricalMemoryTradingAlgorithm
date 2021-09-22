@@ -27,7 +27,7 @@ class Settings:
         self.expected_yield = 1 + 2*self.fee 
         self.risk = 1 - 5/100
         self.program_risk = 10/100
-        
+        self.tolerence = 2/100
         
     def ftx(self):
         self.watchlist=[
