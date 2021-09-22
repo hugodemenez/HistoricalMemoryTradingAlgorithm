@@ -26,8 +26,8 @@ class Prediction:
                     if current_price < float(support['price'])*(1+Settings().tolerence) and current_price > float(support['price'])*(1-Settings().tolerence) and str(support['crypto']).upper() in str(symbol).upper():
                         return {
                             'signal':"buy",
-                            'recovery': support['potential_yield'],
-                            'symbol' : symbol,
+                            'recovery': float(support['potential_yield']),
+                            'symbol' : str(symbol),
                         }
 
         except Exception as e:
@@ -35,7 +35,7 @@ class Prediction:
             
         return {
                 'signal':"neutral",
-                'symbol' : symbol,
+                'symbol' : str(symbol),
                 'error' : error,
             }
 
