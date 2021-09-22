@@ -18,12 +18,12 @@ class Prediction:
         """
         error = ''
         
-        current_price = Settings().broker.price(symbol)['bid']
+        current_price = float(Settings().broker.price(symbol)['bid'])
             
         try:
             for support in csv_reader().file_to_dict_list():
                 #Look if current price is almost on the support (tolerence %)
-                    if current_price < support['price']*(1+Settings().tolerence) and current_price > support['price']*(1-Settings().tolerence) and support['paire'].upper() in symbol.upper():
+                    if current_price < float(support['price'])*(1+Settings().tolerence) and current_price > float(support['price'])*(1-Settings().tolerence) and str(support['crypto']).upper() in str(symbol).upper():
                         return {
                             'signal':"buy",
                             'recovery': support['potential_yield'],
