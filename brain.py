@@ -10,7 +10,7 @@ from prediction import Prediction
 from settings import Settings
 from database import Database
 from position import Position
-
+from csv_generator import csv_generator
 
 
 
@@ -255,7 +255,9 @@ def main():
         return
     else:
         Position.backtesting = True
-        
+    
+    #Generates file with known supports
+    csv_generator()    
         
     #On change la description du telegram pour les settings
     parameters = vars(Settings)
